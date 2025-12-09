@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/estilo.css">
+
+    <title>{{nome_pagina}}</title>
+</head>
+<body>
+    <header id="topo">
+        <div class="container">
+            <div class="logo">MixLab</div>
+            <nav>
+                <a href="/">Home</a>
+                {% if not session["login"] %}
+                    <a href="cadastro">Cadastro</a>
+                    <a href="login">Login</a>
+                {% endif %}
+                <a href="favoritos">Favoritos</a>
+                <a href="carrinho">Carrinho</a>
+                <a href="mixes">Meus Mixes</a>
+                <a href="produtos">Produtos</a>
+                <a href="ingredientes">Ingredientes</a>
+                {% if session["login"] %}
+                    <a href="logout" class="sair">Logout</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {%block main%}{%endblock%}
+    </main>
+
+    <footer>
+        
+    </footer>
+</body>
+</html>
