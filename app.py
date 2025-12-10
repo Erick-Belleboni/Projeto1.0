@@ -36,6 +36,7 @@ def verifica_login(email, senha):
     conn.close()
     return resultado is not None
 
+
 srv = fk.Flask(__name__)
 srv.secret_key = token_hex()
 

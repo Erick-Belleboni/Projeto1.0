@@ -13,19 +13,15 @@
             <div class="logo">MixLab</div>
             <nav>
                 <a href="/">Home</a>
-                {% if not session["login"] %}
-                    <a href="cadastro">Cadastro</a>
-                    <a href="login">Login</a>
-                {% endif %}
                 <a href="favoritos">Favoritos</a>
                 <a href="carrinho">Carrinho</a>
                 <a href="mixes">Meus Mixes</a>
                 <a href="produtos">Produtos</a>
                 <a href="ingredientes">Ingredientes</a>
-                {% if session["login"] %}
-                    <a href="logout" class="sair">Logout</a>
-                {% endif %}
             </nav>
+            <div id="div-usuario">
+                <div class="circulo"><a href="login"><img class="img-circulo" src="/static/img/user.png"></a></div>
+            </div>
         </div>
     </header>
 

@@ -1,13 +1,19 @@
 {%extends "base.html"%}
 
 {%block main%}
-    <form id="login" action="login" method="post">
-        <label>CONECTE-SE</label>
-        <input class="input-login" type="text" name="email" placeholder="E-mail">
+    {% if not session["login"] %}
+        <form id="login" action="login" method="post">
+            <label>CONECTE-SE</label>
+            <input class="input-login" type="text" name="email" placeholder="E-mail">
 
-        <input class="input-login" type="password" name="senha" placeholder="senha">
+            <input class="input-login" type="password" name="senha" placeholder="senha">
 
-        <input id="input-confirmar" type="submit" value="login">
-        <a id="a-cadastro" href="cadastro">Cadastre-se</a>
-    </form>
+            <input id="input-confirmar" type="submit" value="login">
+            <a id="a-cadastro" href="cadastro">Cadastre-se</a>
+        </form>
+    {% endif %}
+
+    {% if session["login"] %}
+        <a href="logout" id="sair">Logout</a>
+    {% endif %}
 {%endblock%}
