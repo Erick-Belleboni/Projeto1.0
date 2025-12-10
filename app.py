@@ -2,6 +2,40 @@ import flask as fk
 from secrets import token_hex
 import sqlite3
 
+def percorre_email(email):
+    conn = conectar()
+    cursor = conn.cursor()
+    cursor.execute("SELECT email FROM cliente WHERE email = ?", (email,))
+    resultado = cursor.fetchone()
+    conn.close()
+
+    return resultado is not None
+
+def cadastrar_cliente(nome,email,senha):
+    conn = conectar()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        INSERT INTO cliente (nome, email, senha)
+        VALUES (?, ?, ?)
+    """, (nome, email, senha))
+
+    conn.commit()
+    conn.close()
+
+def verifica_login(email, senha):
+    conn = conectar()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT email FROM cliente
+        WHERE email = ? AND senha = ?
+    """, (email, senha))
+
+    resultado = cursor.fetchone()
+    conn.close()
+    return resultado is not None
+
 srv = fk.Flask(__name__)
 srv.secret_key = token_hex()
 
@@ -20,17 +54,35 @@ def get_login():
 
 @srv.post("/login")
 def valida_login():
-    login = fk.request.form["login"]
+    email = fk.request.form["email"]
     senha = fk.request.form["senha"]
-    if login=="usuario" and senha=="123":
-    # se login válido:
-        # inicializa session[
-        fk.session["login"] = login
-        # redireciona para home.html
+
+    if verifica_login(email, senha):
+        fk.session["login"] = email
         return fk.redirect("/")
     else:
-        # se login inválido, volta pra login.html
-        return fk.redirect("login")
+        return fk.redirect("/login")
+
+
+@srv.get("/cadastro")
+def get_cadastro():
+   return fk.render_template("cadastro.html")
+
+@srv.post("/cadastro")
+def valida_cadastro():
+    nome = fk.request.form["nome"]
+    email = fk.request.form["email"]
+    senha = fk.request.form["senha"]
+
+    if percorre_email(email):
+        return fk.render_template("cadastro.html")
+    else:
+        cadastrar_cliente(nome,email,senha)
+        fk.session["login"] = email
+        return fk.redirect("/")
+
+    
+   
     
 @srv.get("/logout")
 def get_logout():
@@ -65,10 +117,6 @@ def get_mixes():
 @srv.get("/ingredientes")
 def get_ingredientes():
     return fk.render_template("ingredientes.html")
-
-@srv.get("/cadastro")
-def get_cadastro():
-   return fk.render_template("cadastro.html")
 
 @srv.get("/produtos")
 def get_produtos():

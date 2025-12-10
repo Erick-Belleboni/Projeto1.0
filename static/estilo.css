@@ -22,6 +22,7 @@ h1{
 
 a{
     color: #ffffff;
+    font-family: 'Oswald', sans-serif;
     text-decoration: none;
     line-height: 3rem;
     display: flex;
@@ -257,5 +258,62 @@ main{
 
 #carrossel_produtos .produto:hover {
     background-color: #3a0090;
+}
+
+#login{
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    gap: 20px;
+    align-items: center;
+    background-color: #1c1c1c;
+    padding: 100px;
+    border-radius: 10px;
+}
+
+#login label{
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 50px;
+    font-weight: 400;
+}
+.input-login{
+    width: 680px;
+    height: 50px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+
+#input-confirmar{
+    background-color: #4b00b7;
+    color: #ffffff;
+    height: 50px;
+    width: 300px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    padding-left: 10px;
+    border-radius: 10px;
+    border: none;
+}
+#input-confirmar:hover{
+    background-color: #3a0090;
+}
+
+#a-cadastro{
+    font-family: 'Oswald', sans-serif;
+    color: #ffffff;
+}
+#a-cadastro:hover{
+    text-decoration-line: underline;
+}
+
+#cadastro{
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    gap: 20px;
+    align-items: center;
 }
 

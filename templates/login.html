@@ -1,12 +1,13 @@
 {%extends "base.html"%}
 
 {%block main%}
-    <h1>Login</h1>
-    <form action="login" method="post">
-        <label>login:</label>
-        <input type="text" name="login" placeholder="login">
-        <label>senha:</label>
-        <input type="password" name="senha" placeholder="senha">
-        <input type="submit" value="login">
+    <form id="login" action="login" method="post">
+        <label>CONECTE-SE</label>
+        <input class="input-login" type="text" name="email" placeholder="E-mail">
+
+        <input class="input-login" type="password" name="senha" placeholder="senha">
+
+        <input id="input-confirmar" type="submit" value="login">
+        <a id="a-cadastro" href="cadastro">Cadastre-se</a>
     </form>
 {%endblock%}
