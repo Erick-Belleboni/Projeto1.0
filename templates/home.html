@@ -11,15 +11,23 @@
         
     <h2 id="mais-vendido-h2">Mais Vendidos</h1>
 
-    <section id="carrossel_produtos">
-        <div class="produto"><a href="produto_item/1">Produto 1</a></div>
-        <div class="produto"><a href="produto_item/2">Produto 2</a></div>
-        <div class="produto"><a href="produto_item/3">Produto 3</a></div>
-        <div class="produto"><a href="produto_item/4">Produto 4</a></div>
-        <div class="produto"><a href="produto_item/5">Produto 5</a></div>
-        <div class="produto"><a href="produto_item/6">Produto 6</a></div>
-        <div class="produto"><a href="produto_item/7">Produto 7</a></div>
-        <div class="produto"><a href="produto_item/8">Produto 8</a></div>
-    </section>
+    <section id="carrossel_produtos"></section>
+    
+    <script>
+        const quantidade = {{ quantidade }};
+        const carrossel = document.getElementById("carrossel_produtos");
+
+        for (let i = 0; i <= quantidade; i++) {
+            const divProduto = document.createElement("div");
+            divProduto.classList.add("produto");
+
+            divProduto.innerHTML = `
+                <a href="produto_item/${i}">Produto ${i}</a>
+            `;
+            carrossel.appendChild(divProduto);
+        }
+    </script>
+    
+    
         
 {%endblock%}

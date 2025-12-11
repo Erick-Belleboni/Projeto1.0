@@ -2,6 +2,10 @@ import flask as fk
 from secrets import token_hex
 import sqlite3
 
+srv = fk.Flask(__name__)
+srv.secret_key = token_hex()
+
+
 def percorre_email(email):
     conn = conectar()
     cursor = conn.cursor()
@@ -36,13 +40,22 @@ def verifica_login(email, senha):
     conn.close()
     return resultado is not None
 
+def contar_linhas_tabela(tabela):
+    conn = conectar()
+    cursor = conn.cursor()
+    cursor.execute(f"SELECT COUNT(*) FROM {tabela}")
+    quantidade = cursor.fetchone()[0]
+    conn.close()
+    return quantidade
 
-srv = fk.Flask(__name__)
-srv.secret_key = token_hex()
 
 @srv.get("/")
 def get_home():
-    return fk.render_template("home.html")
+    qtd = contar_linhas_tabela("Produto")
+    return fk.render_template("home.html", quantidade=qtd)
+
+
+
 
 @srv.get("/base")
 def get_base():
