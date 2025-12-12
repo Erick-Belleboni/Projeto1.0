@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/estilo.css">
+
+    <title>{{nome_pagina}}</title>
+</head>
+<body>
+    <header id="topo">
+        <div class="container">
+            <div class="logo">MixLab</div>
+            <nav>
+                <a href="/">Home</a>
+                <a href="favoritos">Favoritos</a>
+                <a href="carrinho">Carrinho</a>
+                <a href="mixes">Meus Mixes</a>
+                <a href="produtos">Produtos</a>
+                <a href="ingredientes">Ingredientes</a>
+            </nav>
+            <div id="div-usuario">
+                <div class="circulo"><a href="login"><img class="img-circulo" src="/static/img/user.png"></a></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        {%block main%}{%endblock%}
+    </main>
+
+    <footer>
+        
+    </footer>
+</body>
+</html>

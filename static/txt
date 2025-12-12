@@ -1,0 +1,13 @@
+cores usadas:
+background-color: #4b00b7;
+hover #3a0090;
+
+body{
+    background-color: #101010;
+}
+
+cinza background-color: #1c1c1c;
+
+
+incluir pagina na pagina`-`
+{% include "bases/header.html" %}

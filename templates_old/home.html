@@ -1,0 +1,33 @@
+{%extends "base.html"%}
+
+{%block main%}
+    <img id="banner" src="/static/img/img_banner.png" alt="">
+    
+    <section class="sec1">
+        <div id="faca_dose">
+            <h2>Faça Sua Dose!</h2>
+        </div>
+    </section>
+        
+    <h2 id="mais-vendido-h2">Mais Vendidos</h1>
+
+    <section id="carrossel_produtos"></section>
+    
+    <script>
+        const quantidade = {{ quantidade }};
+        const carrossel = document.getElementById("carrossel_produtos");
+
+        for (let i = 1; i <= quantidade; i++) {
+            const divProduto = document.createElement("div");
+            divProduto.classList.add("produto");
+
+            divProduto.innerHTML = `
+                <a href="produto_item/${i}">Produto ${i}</a>
+            `;
+            carrossel.appendChild(divProduto);
+        }
+    </script>
+    
+    
+        
+{%endblock%}

@@ -1,0 +1,56 @@
+:root {
+    --header-altura: 8vh;
+    --logo-fonte: 35px;
+    --margin-laterais: 25vh;
+    --nav-font-size: 20px;
+}
+html{
+    color: #ffffff;
+    background-color: #101010;
+}
+
+#h-header{
+    background-color: #4b00b7;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: var(--header-altura);
+    overflow: visible;
+}
+
+#h-logo{
+    font-size: var(--logo-fonte);
+    font-weight: 800;
+    letter-spacing: 5px;
+    margin-left: var(--margin-laterais);    
+}
+
+#h-usuario{
+    margin-right: var(--margin-laterais);
+}
+
+#h-img-usuario{
+    width: 80px;
+}
+
+#h-nav{
+    display: flex;
+    gap: 25px;
+}
+#h-nav a{
+    color: #ffffff;
+    text-decoration: none;
+    font-size: var(--nav-font-size);
+    line-height: 3rem;
+    font-family: 'Oswald', sans-serif;
+    padding: 25px;
+    margin: 5px;
+    position: relative;
+    top: 0;
+    transition: top 0.2s ease, background-color 0.2s ease;
+    border-radius: 10px;
+}
+#h-nav a:hover{
+    background-color: #3a0090;
+    top: -2px;
+}
