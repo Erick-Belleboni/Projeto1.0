@@ -126,6 +126,19 @@ html{
 #input-confirmar:hover{
     background-color: #3a0090;
 }
+#sair{
+    display: flex;
+    background-color: #4b00b7;
+    margin-top: 50px;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+}
+#sair:hover{
+    background-color: #3a0090;
+}
 
 /*-------------------------------HOME-------------------------------*/
 
