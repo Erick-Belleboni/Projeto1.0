@@ -1,0 +1,15 @@
+{%extends "base.html"%}
+
+{%block main%}
+    <form id="login" action="cadastro" method="post">
+        <label>CRIE UMA CONTA</label>
+        <input class="input-login" type="text" name="nome" placeholder="Nome">
+
+        <input class="input-login" type="text" name="email" placeholder="E-mail">
+
+        <input class="input-login" type="password" name="senha" placeholder="Senha">
+
+        <input id="input-confirmar" type="submit" value="Confirmar">
+        <a id="a-cadastro" href="login">Login</a>
+    </form>
+{%endblock%}

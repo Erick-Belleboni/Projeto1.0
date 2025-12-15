@@ -1,0 +1,47 @@
+<section id="carrossel_produtos">
+    {% for p in produtos %}
+    <div class="produto card-produto">
+        <!-- Botão favorito -->
+        <button class="btn-favorito {% if p.id_produto in favoritos %}ativo{% endif %}"
+                data-id="{{ p.id_produto }}"
+                onclick="toggleFavorito(this)">❤
+        </button>
+
+        <!-- imagem do produto -->
+        <img src="{{ p.img }}" alt="{{ p.nome }}">
+
+        <!-- nome,descrição e preço-->
+        <h2>{{ p.nome }}</h2>
+        <p>{{ p.descricao }}</p>
+        <span class="preco">R$ {{ p.preco }}</span>
+
+        <!-- Botão Comprar -->
+        <a href="produto_item/{{ p.id_produto }}" class="btn-comprar">
+            Comprar
+        </a>
+    </div>
+    {% endfor %}
+</section>
+
+<script> /*chatgp*/
+function toggleFavorito(btn) {              // Função chamada quando o botão de favorito é clicado
+    const idProduto = btn.dataset.id;       // Pega o ID do produto do atributo data-id do botão
+    const action = btn.classList.contains("ativo") ? "desfavoritar" : "favoritar";  // Decide se vai favoritar ou desfavoritar
+
+    fetch(`/${action}/${idProduto}`, {      // Faz a requisição POST para a rota correta (/favoritar/id ou /desfavoritar/id)
+        method: "POST",                     // Define o método HTTP como POST
+    })
+    .then(res => res.json())                // Converte a resposta do servidor para JSON
+    .then(data => {
+        if (data.success) {                 // Se a ação deu certo
+            btn.classList.toggle("ativo")   // Adiciona ou remove a classe 'ativo' no botão (muda visual do coração)
+        } else {                            // Se ocorreu algum erro
+            alert("Erro ao atualizar favorito: " + (data.msg || ""));  // Mostra alerta com a mensagem de erro
+        }
+    })
+    .catch(err => {                         // Caso a requisição falhe (erro de rede ou servidor)
+        console.error(err);                 // Mostra o erro no console
+        alert("Erro na requisição");        // Mostra alerta genérico para o usuário
+    });
+}
+</script>

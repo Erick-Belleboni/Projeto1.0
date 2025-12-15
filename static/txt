@@ -11,3 +11,9 @@ cinza background-color: #1c1c1c;
 
 incluir pagina na pagina`-`
 {% include "bases/header.html" %}
+
+
+justify-content = esquerda/centro/direita
+align-items = cima/centro/baixo
+align-self = alinhar só um item
+flex-direction = define se o eixo é horizontal ou vertical

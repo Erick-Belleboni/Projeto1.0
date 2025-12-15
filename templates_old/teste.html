@@ -1,12 +1,205 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>POWERDOSE | Favoritos</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+
+        body{
+            margin: 0;
+            font-family: 'Oswald', sans-serif;
+            background-color: #101010;
+            color: #ffffff;
+        }
+
+        header{
+            background-color: #4b00b7;
+            height: 10vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10%;
+        }
+
+        #logo{
+            font-size: 35px;
+            font-weight: 800;
+            letter-spacing: 5px;
+        }
+
+        nav{
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a{
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        nav a:hover{
+            background-color: #3a0090;
+        }
+
+        main{
+            width: 80%;
+            margin: 50px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        h1{
+            font-size: 50px;
+            font-weight: 300;
+        }
+
+        /* LISTA FLEX */
+        .lista-favoritos{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .card-produto{
+            background-color: #5a00e0;
+            border-radius: 10px;
+            padding: 20px;
+            width: 280px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            transition: 0.2s;
+        }
+
+        .card-produto:hover{
+            background-color: #3a0090;
+        }
+
+        .card-produto img{
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .card-produto h2{
+            font-size: 22px;
+            margin: 0;
+        }
+
+        .card-produto p{
+            font-size: 15px;
+            font-weight: 300;
+            line-height: 1.3;
+        }
+
+        .card-footer{
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .preco{
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .acoes{
+            display: flex;
+            gap: 10px;
+        }
+
+        .acoes button{
+            background-color: #101010;
+            color: #ffffff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .acoes button:hover{
+            background-color: #000000;
+        }
+
+        .vazio{
+            text-align: center;
+            font-size: 22px;
+            font-weight: 300;
+            opacity: 0.7;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>aaa</h1>
-    <img src="/img/img1.png" alt="">
+
+<header>
+    <div id="logo">POWERDOSE</div>
+
+    <nav>
+        <a href="#">Início</a>
+        <a href="#">Produtos</a>
+        <a href="#">Favoritos</a>
+        <a href="#">Carrinho</a>
+    </nav>
+</header>
+
+<main>
+    <h1>Meus Favoritos</h1>
+
+    <section class="lista-favoritos">
+        <div class="card-produto">
+            <img src="https://via.placeholder.com/300x220" alt="Produto">
+            <h2>Whey Protein Prime</h2>
+            <p>Whey concentrado de alta qualidade para ganho de massa muscular.</p>
+
+            <div class="card-footer">
+                <span class="preco">R$ 129,90</span>
+                <div class="acoes">
+                    <button>Adicionar</button>
+                    <button>Remover</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-produto">
+            <img src="https://via.placeholder.com/300x220" alt="Produto">
+            <h2>Creatina UltraPure</h2>
+            <p>Creatina monohidratada 100% pura.</p>
+
+            <div class="card-footer">
+                <span class="preco">R$ 59,90</span>
+                <div class="acoes">
+                    <button>Adicionar</button>
+                    <button>Remover</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- estado vazio -->
+    <!--
+    <div class="vazio">
+        Você ainda não adicionou nenhum produto aos favoritos.
+    </div>
+    -->
+</main>
+
 </body>
 </html>

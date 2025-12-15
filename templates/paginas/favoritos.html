@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<h1>Meus Favoritos</h1>
+<section class="lista-favoritos">
+    {% for p in produtos %}
+    <div class="card-produto">
+        <!-- botao favorito -->
+        <button class="btn-favorito ativo"
+                data-id="{{ p.id_produto }}"
+                onclick="toggleFavorito(this)">
+            ❤
+        </button>
+
+        <!-- img -->
+        <img src="{{ p.img }}" alt="{{ p.nome }}">
+
+        <!-- nome, descrição e preço -->
+        <h2>{{ p.nome }}</h2>
+        <p>{{ p.descricao }}</p>
+        <div class="card-footer">
+            <span class="preco">R$ {{ p.preco }}</span>
+            <div class="acoes">
+                <button onclick="adicionarCarrinho({{ p.id_produto }})">Adicionar</button>  <!-- onclick, ou seja, quando é clicado -->
+                <button onclick="removerFavorito({{ p.id_produto }})">Remover</button>      <!-- executa a funcao ao lado =... -->
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+<script>
+//chat--
+function toggleFavorito(btn){
+    const idProduto = btn.dataset.id;
+    fetch(`/desfavoritar/${idProduto}`, {
+        method: "POST",
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.success){
+            btn.closest(".card-produto").remove();
+        } else {
+            alert("Erro ao remover favorito");
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Erro na requisição");
+    });
+}
+
+function adicionarCarrinho(idProduto){
+    // ------------------------------------------------------------------------------------ajustar dps------------------------------------------
+    alert("Adicionar produto " + idProduto + " ao carrinho");
+}
+
+function removerFavorito(idProduto){
+    fetch(`/desfavoritar/${idProduto}`, {
+        method: "POST",
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.success){
+            document.querySelector(`.card-produto [data-id='${idProduto}']`).closest(".card-produto").remove();
+        } else {
+            alert("Erro ao remover favorito");
+        }
+    });
+}
+</script>
+
+{% endblock %}

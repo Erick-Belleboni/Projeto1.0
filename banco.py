@@ -75,7 +75,8 @@ cursor.execute("""
 CREATE TABLE IF NOT EXISTS Produto (
     id_produto INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
-    img TEXT not null,           
+    tipo TEXT NOT NULL,
+    img TEXT NOT NULL,
     descricao TEXT,
     preco REAL NOT NULL
 );
@@ -137,7 +138,16 @@ CREATE TABLE IF NOT EXISTS Pedido_Item (
     FOREIGN KEY (id_mix) REFERENCES Mix(id_mix)
 );
 """)
-
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS Favorito (
+    id_favorito INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_cliente INTEGER NOT NULL,
+    id_produto INTEGER NOT NULL,
+    FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente),
+    FOREIGN KEY (id_produto) REFERENCES Produto(id_produto),
+    UNIQUE(id_cliente, id_produto) -- evita duplicados
+);
+""")
 conn.commit()
 conn.close()
 
