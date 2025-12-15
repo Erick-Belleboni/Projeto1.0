@@ -2,14 +2,30 @@
 
 {% block main %}
 
-<section class="section-produto">
+<div class="p-produto-item-html">
 
-    <h1>{{ produto_item[1] }}</h1>
-    <img id="img-produto" src="{{ produto_item[3] }}">
-    <p>{{ produto_item[4] }}</p>
-    <p><strong>Preço:</strong> R$ {{ produto_item[5] }}</p>
-    <a href="/" class="btn-voltar">Voltar</a>
+    <div class="p-div-produto">
+        <div class="p-card-pequeno-produto">
+            <button> <img class="p-card-pequeno-img" src="/static/img/img1.png"> </button>
+            <button> <img class="p-card-pequeno-img" src="/static/img/img1.png"> </button>
+            <button> <img class="p-card-pequeno-img" src="/static/img/img1.png"> </button>
+        </div>
 
-</section>
+        <div class="p-card-grande"> 
+            <img class="p-img-card-grande" src="/static/img/img1.png"> 
+        </div>
+    </div>
+
+    <div class="p-div-comprar">
+        <div class="p-card-comprar">
+            a
+        </div>
+    </div>
+
+
+    <div class="p-descricao">
+
+    </div>
+</div>
 
 {% endblock %}
