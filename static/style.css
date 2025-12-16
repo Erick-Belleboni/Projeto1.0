@@ -456,8 +456,7 @@ html{
 
 .p-card-comprar{
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
 
     width: calc(600px + var(--tamanho-card-grande));
     height: calc(600px + var(--tamanho-card-grande));
@@ -467,4 +466,45 @@ html{
     border-radius: 10px;
     border: 1px solid;
     border-color: #000000;
+}
+
+.p-titulo-produto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    padding: 20px;
+    text-align: center;
+
+}
+
+.p-card-comprar h2{
+    padding-left: 50px;
+    color: green;
+    font-size: 45px;
+    margin: 0px;
+}
+.p-card-comprar p{
+    margin: 0;
+    padding-left: 50px;
+    text-decoration: line-through;
+    text-decoration-color: red;
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+
+
+.p-valores{
+    margin-top: ;
+    margin-bottom: ;
+}
+
+.p-quantidade{
+
+}
+
+.p-bt-comprar{
+    display: flex;
+    justify-content: end;
 }
