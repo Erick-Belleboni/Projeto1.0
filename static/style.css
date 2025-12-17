@@ -7,10 +7,7 @@
     --carrocel-produto-altura: 500px;
     
     /*produto_item.html*/
-    --produto-item-html-margin-top: 50px;
-    --div-img-produto-margin-left: 20px; /*ambos precisam ter o mesmo valor*/
-    --p-div-comprar-margin-right: 20px;  /*ambos precisam ter o mesmo valor*/
-
+    --produto-item-html-margin-top: 100px;
     --tamanho-card-grande:50px;
     --tamanho-card-pequeno:0px;
 }
@@ -367,17 +364,16 @@ html{
 
 .p-produto-item-html{
     display: flex;
-    flex-direction: row;
-    justify-content: start;
-    width: 100%;
-    margin-top: var(--produto-item-html-margin-top);
+    justify-content: center;
+    gap: 40px;
+    width: calc(100% - 100px);
     padding-inline: 50px;
+    margin-top: var(--produto-item-html-margin-top);
 }
 
+
 .p-div-produto{
-    display:flex;
-    margin-left: var(--div-img-produto-margin-left);
-    margin-left: calc( 100px + var(--div-img-produto-margin-left));
+    display: flex;
 }
 
 
@@ -448,10 +444,7 @@ html{
 .p-div-comprar{
     display: flex;
     justify-content: end;
-    width: 100%;
-    margin-right: calc( 225px + var(--p-div-comprar-margin-right));
-
-    
+    width: auto;
 }
 
 .p-card-comprar{
@@ -478,13 +471,13 @@ html{
 
 }
 
-.p-card-comprar h2{
+.p-valores h2{
     padding-left: 50px;
     color: green;
     font-size: 45px;
     margin: 0px;
 }
-.p-card-comprar p{
+.p-valores p{
     margin: 0;
     padding-left: 50px;
     text-decoration: line-through;
@@ -496,15 +489,69 @@ html{
 
 
 .p-valores{
-    margin-top: ;
-    margin-bottom: ;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 100;
 }
 
-.p-quantidade{
-
-}
-
-.p-bt-comprar{
+.p-botoes-comprar{
     display: flex;
-    justify-content: end;
+    flex-direction: row;
+    justify-content: start;
+    margin-top: 20%;
+    margin-left: 50px;
+    gap: 50px;
+}
+
+.p-bt-comprar button{
+    background-color: #5a00e0;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+
+    width: 400px;
+    height: 65px;
+
+}
+.p-bt-comprar button:hover{
+    background-color: #3a0090;
+    transition: 0.2s;
+}
+
+.p-bt-quantidade{
+    display: flex;
+    flex-direction: row;
+
+    background-color: #5a00e0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+   
+}
+
+.p-bt-quantidade button{
+    background-color: #5a00e0;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+
+    width: 40px;
+    height: 65px;
+}
+
+.p-bt-quantidade button:hover{
+    background-color: #3a0090;
+    transition: 0.2s;
+}
+
+#bt1{
+    border-radius: 10px,0,0,10px;
+}
+
+#bt2{
+    border-radius: 0 10px 10px 0;
 }
