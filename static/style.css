@@ -490,9 +490,16 @@ html{
 
 .p-valores{
     margin-top: 50px;
-    margin-bottom: 50px;
     font-family: 'Inter', sans-serif;
     font-weight: 100;
+}
+
+.p-descricao1{
+    padding-left: 50px;
+    font-size: small;
+
+    margin-top: 5px;
+    margin-bottom: 50px;
 }
 
 .p-botoes-comprar{
@@ -501,7 +508,7 @@ html{
     justify-content: start;
     margin-top: 20%;
     margin-left: 50px;
-    gap: 50px;
+    gap: 20px;
 }
 
 .p-bt-comprar button{
@@ -521,37 +528,46 @@ html{
     transition: 0.2s;
 }
 
-.p-bt-quantidade{
+
+.p-div-quantidade{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 
     background-color: #5a00e0;
     border-radius: 10px;
     display: flex;
     align-items: center;
-   
+    width: 100px;
 }
 
-.p-bt-quantidade button{
+.p-div-quantidade button{
     background-color: #5a00e0;
     color: #ffffff;
     border: none;
     cursor: pointer;
     font-family: 'Oswald', sans-serif;
-
-    width: 40px;
+    width: 50px;
     height: 65px;
 }
 
-.p-bt-quantidade button:hover{
+.p-div-quantidade button:hover{
     background-color: #3a0090;
     transition: 0.2s;
 }
 
 #bt1{
-    border-radius: 10px,0,0,10px;
+    border-radius: 10px 0 0 10px;
 }
 
 #bt2{
     border-radius: 0 10px 10px 0;
+}
+
+.p-div-descricao{
+    
+}
+
+.p-div-descricao p{
+
 }
