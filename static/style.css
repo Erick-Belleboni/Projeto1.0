@@ -46,6 +46,13 @@ html{
     overflow: visible;
 }
 
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 300px 200px 100px 200px;
+}
+
 #h-logo{
     font-size: var(--logo-fonte);
     font-weight: 800;
@@ -374,6 +381,7 @@ html{
 
 .p-div-produto{
     display: flex;
+    margin-left: -120px;
 }
 
 
@@ -414,7 +422,7 @@ html{
 }
 
 
-/*----------imgagem grande----------*/
+/*----------card-imgagem grande----------*/
 
 .p-card-grande{
     display: flex;
@@ -496,7 +504,7 @@ html{
 
 .p-descricao1{
     padding-left: 50px;
-    font-size: small;
+    font-size: medium;
 
     margin-top: 5px;
     margin-bottom: 50px;
@@ -517,7 +525,9 @@ html{
     border: none;
     border-radius: 10px;
     cursor: pointer;
+
     font-family: 'Oswald', sans-serif;
+    font-size: x-large;
 
     width: 400px;
     height: 65px;
@@ -556,6 +566,10 @@ html{
     transition: 0.2s;
 }
 
+.p-div-quantidade p{
+    pointer-events: none;
+}
+
 #bt1{
     border-radius: 10px 0 0 10px;
 }
@@ -565,9 +579,21 @@ html{
 }
 
 .p-div-descricao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 50px 220px 200px 220px;
+    padding-block: 50px;
+    padding-inline: 100px;
+
+    height: 120px;
     
+    background-color: #1c1c1c;
+    border-radius: 10px;
 }
 
 .p-div-descricao p{
-
+    color: #ffffff;
+    font-size: larger;
 }
