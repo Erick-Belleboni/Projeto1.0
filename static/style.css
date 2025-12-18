@@ -442,8 +442,8 @@ footer{
 }
 
 .p-img-card-grande{
-    max-width: calc(500px + var(--tamanho-card-grande));
-    max-width: calc(500px + var(--tamanho-card-grande));
+    max-width: calc(550px + var(--tamanho-card-grande));
+    max-height: calc(550px + var(--tamanho-card-grande));
 }
 
 

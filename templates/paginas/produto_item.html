@@ -6,13 +6,15 @@
 
     <div class="p-div-produto">
         <div class="p-card-pequeno-produto">
-            <button> <img class="p-card-pequeno-img" src="/static/img/img1.png"> </button>
-            <button> <img class="p-card-pequeno-img" src="/static/img/img1.png"> </button>
-            <button> <img class="p-card-pequeno-img" src="/static/img/img1.png"> </button>
+            {% for img in imagens %}
+                <button onclick="trocarImagem('{{ img.img }}')">
+                    <img class="p-card-pequeno-img" src="{{ img.img }}">
+                </button>
+            {% endfor %}
         </div>
 
         <div class="p-card-grande">
-            <img class="p-img-card-grande" src="/static/img/img1.png">
+            <img id="img-grande" class="p-img-card-grande" src="{{ produto.img }}">
         </div>
     </div>
 
@@ -20,16 +22,16 @@
         <div class="p-card-comprar">
 
             <div class="p-titulo-produto">
-                <h1>Creatina Mono Hidradata Dark Lab</h1>
+                <h1>{{ produto.nome }}</h1>
             </div>
 
             <div class="p-valores">
-                <p>R$ 120,00</p>
-                <h2>R$ 79,90 No Pix</p>
+                <p>R${{ produto.sub_preco }}</p> 
+                <h2>R${{ produto.preco }} no PIX</p>
             </div>
 
             <div class="p-descricao1">
-                Ou em até 4x sem juros!
+                {{ produto.descricao }}
             </div>
 
             <div class="p-botoes-comprar">
@@ -50,8 +52,13 @@
 
 
 <div class="p-div-descricao">
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus praesentium, iusto nobis enim officia assumenda aliquam a impedit dolorem cumque excepturi magnam fuga, et explicabo repellendus provident. Eos, asperiores dolorum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste laudantium minima voluptatem, delectus repellat nisi hic dolorum quae possimus impedit molestiae unde architecto placeat debitis alias sapiente exercitationem harum laborum!</p>
-</div>
+    <p>{{ produto.descricao2 }}</p>
 </div>
 
+
+<script>
+    function trocarImagem(src) {
+        document.getElementById("img-grande").src = src;
+    }
+    </script>
 {% endblock %}

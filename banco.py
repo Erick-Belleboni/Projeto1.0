@@ -78,7 +78,19 @@ CREATE TABLE IF NOT EXISTS Produto (
     tipo TEXT NOT NULL,
     img TEXT NOT NULL,
     descricao TEXT,
-    preco REAL NOT NULL
+    descricao2 TEXT,
+    sub_preco TEXT,
+    preco TEXT NOT NULL
+);
+""")
+
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS Produto_Galeria (
+    id_imagem INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_produto INTEGER NOT NULL,
+    img TEXT NOT NULL,
+    ordem INTEGER DEFAULT 1,
+    FOREIGN KEY (id_produto) REFERENCES Produto(id_produto)
 );
 """)
 

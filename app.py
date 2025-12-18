@@ -193,7 +193,6 @@ def valida_login():
 def get_cadastro():
     return fk.render_template("paginas/cadastro.html")
 
-
 @srv.post("/cadastro")
 def valida_cadastro():
     nome = fk.request.form["nome"]
@@ -270,19 +269,28 @@ def get_produtos():
 @srv.get("/produto_item/<int:id_produto>")
 def produto(id_produto):
     conn = conectar()
+    conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
+
     cursor.execute(
-        "SELECT * FROM produto WHERE id_produto = ?",
+        "SELECT * FROM Produto WHERE id_produto = ?",
         (id_produto,)
     )
-    produto_item = cursor.fetchone()
+    produto = cursor.fetchone()
+
+    cursor.execute(
+        "SELECT img FROM Produto_Galeria WHERE id_produto = ? ORDER BY ordem",
+        (id_produto,)
+    )
+    imagens = cursor.fetchall()
+
     conn.close()
 
     return fk.render_template(
         "paginas/produto_item.html",
-        produto_item=produto_item
+        produto=produto,
+        imagens=imagens
     )
-
 
 # -------------------- START --------------------
 
