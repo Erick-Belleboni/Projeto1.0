@@ -5,60 +5,111 @@
 <div class="p-produto-item-html">
 
     <div class="p-div-produto">
+
+        <!----------------Cards pequenos---------------->
         <div class="p-card-pequeno-produto">
+            <button onclick="trocarImagem('{{ produto.img }}')">
+                <img class="p-card-pequeno-img" src="{{ produto.img }}">
+            </button>
             {% for img in imagens %}
-                <button onclick="trocarImagem('{{ img.img }}')">
-                    <img class="p-card-pequeno-img" src="{{ img.img }}">
-                </button>
+            <button onclick="trocarImagem('{{ img.img }}')">
+                <img class="p-card-pequeno-img" src="{{ img.img }}">
+            </button>
             {% endfor %}
         </div>
+        <!----------------Cards pequenos---------------->
 
+
+
+        <!----------------Card imagem do produto---------------->
         <div class="p-card-grande">
             <img id="img-grande" class="p-img-card-grande" src="{{ produto.img }}">
         </div>
+        <!----------------Card imagem do produto---------------->
     </div>
 
+
+
+    <!----------------Card informações(lado direito)---------------->
     <div class="p-div-comprar">
         <div class="p-card-comprar">
-
+            <!----------------Titulo---------------->
             <div class="p-titulo-produto">
                 <h1>{{ produto.nome }}</h1>
             </div>
+            <!----------------Titulo---------------->
 
+
+            <!----------------Valores---------------->
             <div class="p-valores">
-                <p>R${{ produto.sub_preco }}</p> 
-                <h2>R${{ produto.preco }} no PIX</p>
+                <p>R$ {{ "%.2f"|format(produto.sub_preco)|replace(".", ",") }} no PIX</p>
+                <h2>R$ {{ "%.2f"|format(produto.preco)|replace(".", ",") }} no PIX</h2>
             </div>
+            <!----------------Valores---------------->
 
+
+            <!----------------Descrição1---------------->
             <div class="p-descricao1">
                 {{ produto.descricao }}
             </div>
+            <!----------------Descrição1---------------->
 
+
+            <!----------------Botões---------------->
             <div class="p-botoes-comprar">
-                <div class="p-bt-comprar">
-                    <button>Comprar</button>
-                </div>
+                <form action="/adicionar-carrinho" method="POST" class="p-bt-comprar">
+                    <input type="hidden" name="produto_id" value="{{ produto.id_produto }}">
+                    <input type="hidden" name="quantidade" id="inputQuantidade" value="1">
+
+                    <button type="submit">Comprar</button>
+                </form>
 
                 <div class="p-div-quantidade">
-                    <button id="bt1">+</button>
-                    <p>3</p>
-                    <button id="bt2">-</button>
+                    <button type="button" id="bt2">-</button>
+                    <p id="quantidade">1</p>
+                    <button type="button" id="bt1">+</button>
                 </div>
             </div>
+            <!----------------Botões---------------->
 
         </div>
     </div>
+    <!----------------Card informações(lado direito)---------------->
 </div>
 
-
+<!----------------Descrição2---------------->
 <div class="p-div-descricao">
     <p>{{ produto.descricao2 }}</p>
 </div>
+<!----------------Descrição2---------------->
 
 
+<!----------------Função trocar de img---------------->
 <script>
     function trocarImagem(src) {
         document.getElementById("img-grande").src = src;
     }
-    </script>
+
+    const bt1 = document.getElementById("bt1");
+    const bt2 = document.getElementById("bt2");
+    const quantidadeEl = document.getElementById("quantidade");
+    const inputQuantidade = document.getElementById("inputQuantidade");
+
+    let quantidade = 1;
+
+    bt1.addEventListener("click", () => {
+        quantidade++;
+        quantidadeEl.textContent = quantidade;
+        inputQuantidade.value = quantidade;
+    });
+
+    bt2.addEventListener("click", () => {
+        if (quantidade > 1) {
+            quantidade--;
+            quantidadeEl.textContent = quantidade;
+            inputQuantidade.value = quantidade;
+        }
+    });
+</script>
+<!----------------Função trocar de img---------------->
 {% endblock %}

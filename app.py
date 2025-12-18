@@ -244,16 +244,70 @@ def get_carrinho():
         login=fk.session["login"]
     )
 
-
-@srv.get("/mixes")
-def get_mixes():
+@srv.route("/adicionar-carrinho", methods=["POST"])
+def adicionar_carrinho():
     if "login" not in fk.session:
         return fk.redirect("/login")
 
-    return fk.render_template(
-        "paginas/mixes.html",
-        login=fk.session["login"]
+    email = fk.session["login"]
+
+    conn = conectar()
+    cursor = conn.cursor()
+
+    # cliente
+    cursor.execute(
+        "SELECT id_cliente FROM Cliente WHERE email = ?",
+        (email,)
     )
+    row_cliente = cursor.fetchone()
+    if not row_cliente:
+        conn.close()
+        return fk.redirect("/login")
+
+    id_cliente = row_cliente[0]
+
+    produto_id = fk.request.form.get("produto_id")
+    quantidade = int(fk.request.form.get("quantidade", 1))
+
+    # carrinho
+    cursor.execute(
+        "SELECT id_carrinho FROM Carrinho WHERE id_cliente = ?",
+        (id_cliente,)
+    )
+    row_carrinho = cursor.fetchone()
+
+    if row_carrinho:
+        id_carrinho = row_carrinho[0]
+    else:
+        cursor.execute(
+            "INSERT INTO Carrinho (id_cliente) VALUES (?)",
+            (id_cliente,)
+        )
+        id_carrinho = cursor.lastrowid
+
+    # produto
+    cursor.execute(
+        "SELECT preco FROM Produto WHERE id_produto = ?",
+        (produto_id,)
+    )
+    row_produto = cursor.fetchone()
+    if not row_produto:
+        conn.close()
+        return fk.redirect("/")
+
+    preco_unitario = float(row_produto[0])
+
+    # item
+    cursor.execute("""
+        INSERT INTO Carrinho_Item
+        (id_carrinho, tipo_item, id_produto, quantidade, preco_unitario)
+        VALUES (?, 'produto', ?, ?, ?)
+    """, (id_carrinho, produto_id, quantidade, preco_unitario))
+
+    conn.commit()
+    conn.close()
+
+    return fk.redirect("/carrinho")
 
 
 @srv.get("/ingredientes")

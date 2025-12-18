@@ -407,7 +407,7 @@ footer{
     
     border-radius: 10px;
     border: 1px solid;
-    border-color: #000000;
+    border-color: #333333;
 
     transition: transform 0.2s;
 
@@ -438,7 +438,7 @@ footer{
     
     border-radius: 10px;
     border: 1px solid;
-    border-color: #000000;
+    border-color: #333333;
 }
 
 .p-img-card-grande{
@@ -466,7 +466,7 @@ footer{
     
     border-radius: 10px;
     border: 1px solid;
-    border-color: #000000;
+    border-color: #333333;
 }
 
 .p-titulo-produto{
@@ -571,11 +571,11 @@ footer{
 }
 
 #bt1{
-    border-radius: 10px 0 0 10px;
+    border-radius: 0 10px 10px 0;
 }
 
 #bt2{
-    border-radius: 0 10px 10px 0;
+    border-radius: 10px 0 0 10px;
 }
 
 .p-div-descricao{
@@ -590,6 +590,8 @@ footer{
     height: 120px;
     
     background-color: #1c1c1c;
+    border: 1px solid;
+    border-color: #333333;
     border-radius: 10px;
 }
 

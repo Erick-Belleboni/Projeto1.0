@@ -79,8 +79,8 @@ CREATE TABLE IF NOT EXISTS Produto (
     img TEXT NOT NULL,
     descricao TEXT,
     descricao2 TEXT,
-    sub_preco TEXT,
-    preco TEXT NOT NULL
+    sub_preco REAL,
+    preco REAL NOT NULL
 );
 """)
 
@@ -109,14 +109,21 @@ cursor.execute("""
 CREATE TABLE IF NOT EXISTS Carrinho_Item (
     id_item INTEGER PRIMARY KEY AUTOINCREMENT,
     id_carrinho INTEGER NOT NULL,
-    tipo_item TEXT NOT NULL,  -- 'produto' ou 'mix'
+    tipo_item TEXT NOT NULL CHECK (tipo_item IN ('produto', 'mix')),
     id_produto INTEGER,
     id_mix INTEGER,
     quantidade INTEGER NOT NULL DEFAULT 1,
     preco_unitario REAL NOT NULL,
+
     FOREIGN KEY (id_carrinho) REFERENCES Carrinho(id_carrinho),
-    FOREIGN KEY (id_produto) REFERENCES ProdutoPronto(id_produto),
-    FOREIGN KEY (id_mix) REFERENCES Mix(id_mix)
+    FOREIGN KEY (id_produto) REFERENCES Produto(id_produto),
+    FOREIGN KEY (id_mix) REFERENCES Mix(id_mix),
+
+    CHECK (
+        (tipo_item = 'produto' AND id_produto IS NOT NULL AND id_mix IS NULL)
+        OR
+        (tipo_item = 'mix' AND id_mix IS NOT NULL AND id_produto IS NULL)
+    )
 );
 """)
 
